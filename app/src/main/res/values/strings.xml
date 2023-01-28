@@ -27,4 +27,8 @@
     <string name="delete">Delete</string>
     <string name="keluar">Keluar</string>
     <string name="tambah_barang">Tambah Barang</string>
+    <string name="dialog_delete">Apakah Anda yakin ingin menghapus data barang ini?</string>
+    <string name="selesai">Selesai</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
 </resources>

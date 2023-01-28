@@ -7,5 +7,5 @@
         android:title="@string/tambah_barang"/>
     <item
         android:id="@+id/menu_exit"
-        android:title="@string/keluar"/>
+        android:title="@string/selesai"/>
 </menu>

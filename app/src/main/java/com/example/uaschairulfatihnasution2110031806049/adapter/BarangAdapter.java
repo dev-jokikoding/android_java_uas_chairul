@@ -3,6 +3,7 @@ package com.example.uaschairulfatihnasution2110031806049.adapter;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -155,10 +156,14 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.myViewHold
                 } else if (menuItem.getItemId() == R.id.menu_delete) {
                     id = String.valueOf(barangArrayList.get(position).getId());
 
-                    deleteBarang(
-                            v.getContext(),
-                            id
-                    );
+                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                    builder.setMessage(R.string.dialog_delete)
+                            .setPositiveButton(R.string.yes, (dialogInterface, i) -> deleteBarang(
+                                    v.getContext(),
+                                    id
+                            ))
+                            .setNegativeButton(R.string.no, (dialogInterface, i) -> dialogInterface.dismiss());
+                    builder.show();
                 } else {
                     Toast.makeText(v.getContext(), "Error", Toast.LENGTH_SHORT).show();
                 }

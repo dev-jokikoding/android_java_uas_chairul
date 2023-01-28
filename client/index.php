@@ -6,6 +6,7 @@ try{
     $userName = "root";
     $password = "";
     $dbName = "dbuas049";
+    $tblName = "tbluas049";
     $port = "8111";
 
     $konn = new PDO("mysql:host=$serverName;port=$port;dbname=$dbName", $userName, $password);
@@ -17,7 +18,7 @@ try{
 
     }
     if($_SERVER['REQUEST_METHOD']==="GET"){
-        $msql="select * from tbluas049 order by id";
+        $msql="select * from $tblName order by id";
         $hasil = $konn->prepare($msql);
         $hasil->execute();
         $data=$hasil->fetchAll(PDO::FETCH_ASSOC);
@@ -32,7 +33,7 @@ try{
         $harga_satuan = $_POST['harga_satuan'];
         $diskon = $_POST['diskon'];
         $total_harga = $_POST['total_harga'];
-        $msql="insert into tbluas049(nama,alamat,no_penjual,kode_barang,jumlah_penjualan,harga_satuan,diskon,total_harga) values ('$nama','$alamat','$no_penjual','$kode_barang','$jumlah_penjualan','$harga_satuan','$diskon','$total_harga')";
+        $msql="insert into $tblName(nama,alamat,no_penjual,kode_barang,jumlah_penjualan,harga_satuan,diskon,total_harga) values ('$nama','$alamat','$no_penjual','$kode_barang','$jumlah_penjualan','$harga_satuan','$diskon','$total_harga')";
         $hasil = $konn->prepare($msql);
         $hasil->execute();
         $data=$hasil->fetchAll(PDO::FETCH_ASSOC);
@@ -48,7 +49,7 @@ try{
             $harga_satuan = $_GET['harga_satuan'];
             $diskon = $_GET['diskon'];
             $total_harga = $_GET['total_harga'];
-            $msql="update tbluas049 set nama='$nama', alamat='$alamat', no_penjual='$no_penjual', kode_barang='$kode_barang', jumlah_penjualan='$jumlah_penjualan', harga_satuan='$harga_satuan', diskon='$diskon', total_harga='$total_harga' WHERE id='$id'";
+            $msql="update $tblName set nama='$nama', alamat='$alamat', no_penjual='$no_penjual', kode_barang='$kode_barang', jumlah_penjualan='$jumlah_penjualan', harga_satuan='$harga_satuan', diskon='$diskon', total_harga='$total_harga' WHERE id='$id'";
             $hasil = $konn->prepare($msql);
             $hasil->execute();
             $data=$hasil->fetchAll(PDO::FETCH_ASSOC);
@@ -58,7 +59,7 @@ try{
         }
     } else if ($_SERVER['REQUEST_METHOD']==="DELETE"){
         $id = $_GET['id'];
-        $msql="delete from tbluas049 where id='$id'";
+        $msql="delete from $tblName where id='$id'";
         $hasil = $konn->prepare($msql);
         $hasil->execute();
         $data=$hasil->fetchAll(PDO::FETCH_ASSOC);
